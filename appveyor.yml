@@ -6,17 +6,8 @@ nuget:
   account_feed: true
   project_feed: true
 
-build_script:
-  - cmd: dotnet restore
-  - cmd: dotnet publish ./src/Iridium.Callee/Iridium.Callee.csproj
-
-test_script:
-  - cmd: "cd ./src/Iridium.Tests/"
-  - cmd: dotnet restore
-  - cmd: dotnet test
-
 artifacts:
-- path: .\src\bin\Release\publish\
+- path: .\src\Iridium.Callee\bin\Release\publish\
   name: Iridium
   type: WebDeployPackage
 deploy:
