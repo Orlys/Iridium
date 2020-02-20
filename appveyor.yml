@@ -1,0 +1,26 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration:
+    - Release
+nuget:
+  account_feed: true
+  project_feed: true
+
+build_script:
+  - cmd: dotnet restore
+  - cmd: dotnet publish ./src/Iridium.Callee/Iridium.Callee.csproj
+
+test_script:
+  - cmd: "cd ./src/Iridium.Tests/"
+  - cmd: dotnet restore
+  - cmd: dotnet test
+
+artifacts:
+- path: .\src\bin\Release\publish\
+  name: Iridium
+  type: WebDeployPackage
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: WAfIsXkzH0DOMQ3//IB7Xp4PC8YCAr0TME4cqwcpodyNI2j+Fmg7La6Q9Wiw92oQ
+  artifact: /.*\.zip/
