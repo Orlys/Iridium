@@ -7,6 +7,17 @@
     <Authors>Orlys</Authors>
     <Company />
     <Copyright></Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Orlys/Iridium</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Orlys/Iridium</PackageProjectUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <AssemblyName>Orlys.Iridium</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
