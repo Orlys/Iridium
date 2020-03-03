@@ -29,55 +29,54 @@ namespace Iridium.Tests.Callee
                     .GetMethod("PrivateForCall", BindingFlags.NonPublic | BindingFlags.Instance)
                     .Invoke(this._t, null);
 
-                Assert.Fail();
             }
             catch (TargetInvocationException e) when (e.InnerException is AccessDeniedException)
             {
-                // pass
+                return;
             }
-            catch
-            {
-                Assert.Fail();
-            }
-
+            Assert.Fail();
         }
 
         [TestMethod]
+        public void MaliciousCallInternalMethod_CheckCaller_Test()
+        {
+            try
+            {
+                this._t.InternalForCall();
+            }
+            catch (AccessDeniedException)
+            {
+                return;
+            }
+            Assert.Fail();
+        }
+
+        [TestMethod] 
         public void CallPublicMethod_CheckCaller_Test()
         {
             try
             {
                 this._t.PublicForCall();
-                Assert.Fail();
             }
             catch (NotSupportedException)
             {
-                // pass
+                return;
             }
-            catch
-            {
-                Assert.Fail();
-            }
+            Assert.Fail();
         }
-
-
 
         [TestMethod]
         public void CallDisallowOtherClass_Allow_Test()
         {
             try
             {
-                this._t.DisallowOtherClassCall();
-                Assert.Fail();
+                this._t.DisallowOtherClassCall(); 
             }
             catch (AccessDeniedException)
             {
-                // pass
+                return;
             }
-            catch
-            {
-                Assert.Fail();
-            }
+            Assert.Fail();
         }
 
         [TestMethod]
@@ -86,7 +85,7 @@ namespace Iridium.Tests.Callee
             try
             {
                 this._t.AllowTestClassCall();
-                // pass
+                return;
             }
             catch
             {
@@ -94,7 +93,7 @@ namespace Iridium.Tests.Callee
             }
         }
     } 
-     
+    
     [DebuggerNonUserCode]
     public class TargetObject
     {
@@ -104,6 +103,11 @@ namespace Iridium.Tests.Callee
         }
 
         private void PrivateForCall()
+        {
+            CalleeChecker.CheckCaller();
+        }
+
+        internal void InternalForCall()
         {
             CalleeChecker.CheckCaller();
         }

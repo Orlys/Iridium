@@ -6,17 +6,25 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Orlys</Authors>
     <Company />
-    <Copyright></Copyright>
+    <Copyright>Copyright © 2020 Orlys Ma</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Orlys/Iridium</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Orlys/Iridium</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
     <AssemblyName>Orlys.Iridium</AssemblyName>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>Lightweight library for runtime method's caller checking.</Description>
+    <SignAssembly>true</SignAssembly>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Update="LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
